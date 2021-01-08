@@ -1,0 +1,42 @@
+.container {
+  // The container can decrease if there is not enough space to display our 1200px=120rem
+  // So, if the viewport is less than 1200px then we simply occupy 100% of the available
+  // viewport width
+  max-width: 120rem;
+
+  // Centering
+  margin: 8rem auto;
+
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+
+  // For testing purposes
+  min-height: 50rem;
+}
+
+.header {
+  height: 7rem;
+  background-color: #fff;
+  border-bottom: var(--color-grey-light-2);
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  background-color: var(--color-grey-dark-1);
+
+  // The element is not going to grow, not going to shrink, we always want to keep at 18%
+  // Generally, with percentages it would be better to allow it to shrink, but right now
+  // it's good like this.
+  flex: 0 0 18%;
+}
+
+.hotel-view {
+  background-color: #fff;
+  background-color: orangered;
+
+  // Now the element should grow as much as it can
+  flex: 1;
+}

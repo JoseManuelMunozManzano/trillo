@@ -11,23 +11,70 @@
         <title>trillo &mdash; Your all-in-one booking app</title>
     </head>
     <body>
-        <!-- There are three big parts inside of the container:
-           1. The header on top
-           2. The sidebar on the left side
-           3. The hotel view on the right side  -->        
         <div class="container">
+            <!-- In our header, we basically have 3 main components:
+                1. Logo
+                2. Search bar with the input field and an icon
+                3. User navigation -->
             <header class="header">
-                Header part
+                <img src="img/logo.png" alt="trillo logo" class="logo">
+
+                <!-- BEM -->
+                <!-- Block -->
+                <form action="#" class="search">
+                    <!-- Element -->
+                    <input type="text" class="search__input" placeholder="Search hotels">
+                    <button class="search__button">
+                        <!-- Instead of icon-fonts we are going to use SVG's as icons -->
+                        <!-- This is because icon-fonts have several problems, like
+                            the fact that it's really just a hack to display icons,
+                            which are like images using a font. Also, icon-fonts fails
+                            more often than you would think, and in that case the browser
+                            just displays a blank square on the screen. and that's 
+                            really terrible. Other issues are screenreaders for blind
+                            people trying to read out the icon-fonts and, of course,
+                            failing to do so. -->
+                        <!-- What is SVG? SVG stands for Scalable Vector Graphics, and
+                            it's a way of writing vector graphics with code.
+                            There is a webapp called icomoon.io that you can use for 
+                            this -->
+                        <!-- The best way to include SVG's in HTML is using a SVG sprite
+                            and that's because in this way we can change the color of
+                            each of the icons using CSS -->
+                        <svg class="search__icon">
+                            <!-- xlin:href is only gonna work on the web server -->
+                            <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+                        </svg>
+                    </button>
+                </form>
+
+                <nav class="user-nav">
+                    <div class="user-nav__icon-box">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/sprite.svg#icon-bookmark"></use>
+                        </svg>
+                        <span class="user-nav__notification">7</span>
+                    </div>
+
+                    <div class="user-nav__icon-box">
+                        <svg class="user-nav__icon">
+                            <use xlink:href="img/sprite.svg#icon-chat"></use>
+                        </svg>
+                        <span class="user-nav__notification">13</span>
+                    </div>         
+
+                    <div class="user-nav__user">
+                        <img src="img/user.jpg" alt="User photo" class="user-nav__user-photo">
+                        <span class="user-nav__user-name">José</span>
+                    </div>           
+                </nav>
             </header>
 
-            <!-- Our flex container -->
             <div class="content">
-                <!-- flex item -->
                 <nav class="sidebar">
                     Navigation
                 </nav>
 
-                <!-- flex item -->
                 <main class="hotel-view">
                     Hotel view
                 </main>

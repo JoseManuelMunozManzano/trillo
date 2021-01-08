@@ -1,0 +1,67 @@
+// We are going to use CSS custom properties, better known as CSS variables.
+// These CSS variables can be manipulated in JavaScript and we can also edit them in our
+// devtools.
+// Also, it's easier to use CSS variables in the called function and also CSS variables
+// cascade and they're inherited, so they're very different from Sass variables in that
+// regard.
+// A problem with CSS variables is that not all browsers support them yet.
+//
+// These custom properties have to be defined inside a scope, within a declaration block.
+// We could put these variables just in any normal selector, but then these variables would
+// only be available in that element and its children. This is not what we want.
+// Also, it's easier to just have one central place where we collect all the variables
+// in one place. This one place is usually the root pseudo-class.
+// The root pseudo-class is essentially like the same thing as the HTML selector but with
+// a higher specificity.
+// By putting all of our variables in here, they will be accessible throughout the entire
+// document, because that's what the root of the document is, it's like the global parent
+// element.
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+}
+
+// Global resets
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  // Everything will inherit this property
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // 1rem = 10px because 10px/16px = 62.5%
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-2);
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary-light),
+    var(--color-primary-dark)
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  // Increasing the body to cover the entire viewport height
+  min-height: 100vh;
+}

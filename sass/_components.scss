@@ -226,3 +226,66 @@
   text-align: center;
   padding: 2.5rem;
 }
+
+////////////////////////////////////////////
+// GALLERY
+.gallery {
+  // Only with display:flex the photos will be perfectly aligned side by side.
+  // Without flexbox, we would have to set the width to 33,33333% and the do a float, using
+  // clearfix hack on the parent, and all of that is a bunch of work.
+  display: flex;
+
+  &__photo {
+    // With responsive design we want flexible images, so we always have to define a width
+    // or a height in percentages, so that the image stays fluid.
+    width: 100%;
+
+    // That's about having a small space underneath an image, which happens when we leave it
+    // as an inline element
+    // So an image should always be a block or inline-block if we dont' want that white space.
+    display: block;
+  }
+}
+
+////////////////////////////////////////////
+// HOTEL OVERVIEW
+.overview {
+  display: flex;
+
+  &__heading {
+  }
+
+  &__stars {
+    // This flex item should grow and occupy all the available space
+    // But this isn't really ideal, because this element should only be the size of its content.
+    // So, in this case, the size of these stars.
+    // If we had a hover effect on this entire element, for example, would change the background color
+    //flex: 1;
+
+    // What we really want is a way to create the stars space without stretching out the entire element
+    // So we use margin with value auto
+    // Now our element only occupy the space that it needs.
+    // The rest of the space is the automatically calculated margin.
+    // This trick is really helpul in flexbox
+    margin-right: auto;
+  }
+
+  &__icon-star,
+  &__icon-location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary);
+  }
+
+  &__location {
+  }
+
+  &__rating {
+  }
+
+  &__rating-average {
+  }
+
+  &__rating-count {
+  }
+}

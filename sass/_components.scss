@@ -138,16 +138,83 @@
 ////////////////////////////////////////////
 // SIDE NAVIGATION
 .side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem;
+
   &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
   }
 
-  &__link {
+  // The small line that becomes visible and then expands to the right side
+  &__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%; // exactly the same height as the list item
+    width: 3px;
+    background-color: var(--color-primary);
+
+    transform: scaleY(0);
+    // Starts in the middle and grows to the sides, in the Y direction
+    // And starts scaling in the center because that's where the transform-origin is set by default.
+    // Another example, scaling from the bottom: transform-origin: bottom;
+    //
+    // We can set different settings for different properties.
+    // With width, we specify a delay of .2s. It's exactly the time it takes for this firs transform
+    // here to happen.
+    //
+    // cubic-bezier
+    // https://cubic-bezier.com/#1,0,0,1
+    // It starts really slow, then it accelerates real fast and then it slows down again.
+    transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+      background-color 0.1s;
+  }
+
+  &__item:hover::before,
+  &__item--active::before {
+    transform: scaleY(1);
+    width: 100%; // Expanding all the width
+  }
+
+  &__item:active::before {
+    background-color: var(--color-primary-light);
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: var(--color-grey-light-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 1.5rem 3rem;
+
+    // We want the link on top of the before pseudo-element
+    // Remember: z-index only works if we have specified a position
+    position: relative;
+    z-index: 10;
+
+    // To center vertically the svg icon and the text
+    display: flex;
+    align-items: center;
   }
 
   &__icon {
     // Usually we size these svg icons as square
     width: 1.75rem;
     height: 1.75rem;
+
+    margin-right: 2rem;
+    // currentColor basically is just the color of the current element or the parent element (inherit the color)
+    // For example: we could do &__link:hover with orangered color, so the element would be grey-light-1
+    // or, if I hover over the element it would be orangered, only with this currentColor. Very useful.
+    // It's very well supported by many browsers
+    fill: currentColor;
   }
 }
 

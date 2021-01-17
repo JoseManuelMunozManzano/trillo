@@ -251,8 +251,15 @@
 // HOTEL OVERVIEW
 .overview {
   display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-2);
 
   &__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem;
   }
 
   &__stars {
@@ -268,6 +275,15 @@
     // The rest of the space is the automatically calculated margin.
     // This trick is really helpul in flexbox
     margin-right: auto;
+
+    // There is a small space below each of the stars, so they are not really vertically centered
+    // with .heading
+    // This is because SVG elements behave like inline elements, it's a bit like text, and that produces
+    // that small bottom white space. We can remove that by setting the line-height and the font-size to 0
+    // for example, but we have a simpler way of doing that:
+    // To setting his parent element as a flex container. Now, the icons will become flex-tems and that
+    // space will be gone.
+    display: flex;
   }
 
   &__icon-star,
@@ -278,14 +294,93 @@
   }
 
   &__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-location {
+    margin-right: 0.5rem;
   }
 
   &__rating {
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-left: 3rem;
+    padding: 0 2.25rem;
+
+    // We override align-items: center that we set in .overview
+    // stretch occupies all the space that it has available
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   &__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -3px;
   }
 
   &__rating-count {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+////////////////////////////////////////////
+// BUTTON INLINE
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+
+  // This is because we are going to use this class in another place, and in that case the font will be bigger.
+  // So, we will inherit the font-size of its parent in each case.
+  // And so by that, it becomes a bit more modular, more reusable.
+  font-size: inherit;
+
+  // Another example with currentColor.
+  // It will be --color-primary and when hover --color-grey-dark-1
+  border-bottom: 1px solid currentColor;
+
+  padding-bottom: 2px;
+  display: inline-block;
+
+  // We don't want to attribute a fixed color for the background.
+  // This helps making the button a bit more modular.
+  background-color: transparent;
+
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-grey-dark-1);
+  }
+
+  &:focus {
+    outline: none;
+    // infinite pulsate animation
+    animation: pulsate 1s infinite;
+  }
+}
+
+// pulsate animation
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: none;
   }
 }

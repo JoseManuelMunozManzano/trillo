@@ -384,3 +384,106 @@
     box-shadow: none;
   }
 }
+
+////////////////////////////////////////////
+// PARAGRAPH
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+////////////////////////////////////////////
+// LIST
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  // We make all the li items have the same width
+  &__item {
+    // 50% because we want to have two elements side-by-side. 100% / 2 = 50%
+    flex: 0 0 50%;
+    margin-bottom: 0.7rem;
+  }
+
+  // Using CVG in CSS directly
+  &__item::before {
+    content: '';
+
+    // These 3 lines are responsible of you can see the icon
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+
+    margin-right: 0.7rem;
+
+    // It's much easier to use a single icon than to work with sprite.svg
+
+    // Approach for older browsers - Using background-image
+    // There is a problem of including an SVG as a background-image, and this is
+    // that we have no way of changing the color
+    // background-image: url(../img/chevron-thin-right.svg);
+    // background-size: cover;
+
+    // Approach for modern browsers - Using masks - Best approach
+    // A mask defines an area where we can look through the element and see what's
+    // behind that element.
+    // So basically, we are going to do is to set the background-color of this
+    // element to a solid color and then use the icon as the mask, so we can then
+    // look through that mask and see the background color in the area where the
+    // icon is and everything else is covered, and so it's just gonna be white.
+    // mask, for now only works in webkit browsers
+    background-color: var(--color-primary);
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    // The icon covers the entire element. It behaves like background-size
+    -webkit-mask-size: cover;
+
+    // For the future, when all the other browsers start implementing this as well.
+    mask-image: url(../img/chevron-thin-right.svg);
+    mask-size: cover;
+  }
+}
+
+////////////////////////////////////////////
+// RECOMMEND
+.recommend {
+  font-size: 1.3rem;
+  color: var(--color-grey-dark-3);
+
+  display: flex;
+  align-items: center;
+
+  &__count {
+    // The margin is automatically calculated to push the recommend__friends
+    // box all the way to the right side.
+    margin-right: auto;
+  }
+
+  &__friends {
+  }
+
+  &__photo {
+    // In this exact situation we want the border to be added on top of our
+    // height and width, so we can set it back to the default
+    box-sizing: content-box;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+
+    // White border around of all the images
+    // But this make the images shrink.
+    // To fix that:
+    //   1- We can add these 3px on the height and width
+    //   2- We can do it automatically using box-sizing property. We use this one.
+    border: 3px solid #fff;
+
+    &:not(:last-child) {
+      // Giving a negative right margin we can do the overlapping effect
+      margin-right: -1.5rem;
+    }
+  }
+}

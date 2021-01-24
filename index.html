@@ -186,7 +186,43 @@
                         </div>
 
                         <div class="user-reviews">
-                            User reviews
+                            <!-- figures in HTML5 are perfect for reviews -->
+                            <!-- In fact, figures are great for some text and 
+                            descriptions of the images, so perfect too for 
+                            our review -->
+                            <figure class="review">
+                                <!-- Review is like a quote from the person -->
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi, totam, itaque officia ex.
+                                </blockquote>
+                                <!-- The container which will hold the user's image
+                                the name, the date and the rating -->
+                                <figcaption class="review__user">
+                                    <img src="img/user-1.jpg" alt="User 1" class="review__photo">
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Nich Smith</p>
+                                        <p class="review__user-date">Feb 23rd, 2017</p>
+                                    </div>
+                                    <div class="review__rating">7.8</div>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="review">
+                                <blockquote class="review__text">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi.
+                                </blockquote>
+                                <figcaption class="review__user">
+                                    <img src="img/user-2.jpg" alt="User 2" class="review__photo">
+                                    <div class="review__user-box">
+                                        <p class="review__user-name">Mary Thomas</p>
+                                        <p class="review__user-date">Sept 13th, 2017</p>
+                                    </div>
+                                    <div class="review__rating">9.3</div>
+                                </figcaption>
+                            </figure>     
+                            
+                            <!-- In a span because we want a small animation effect -->
+                            <button class="btn-inline">Show all <span>&rarr;</span></button>
                         </div>
                     </div>
 

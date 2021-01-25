@@ -584,7 +584,7 @@
 ////////////////////////////////////////////
 // BUTTON
 .btn {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 300;
   text-transform: uppercase;
   border-radius: 100px;
@@ -646,6 +646,7 @@
   }
 
   &:focus {
+    font-size: 1.6rem;
     outline: none;
     animation: pulsate 1s infinite;
   }

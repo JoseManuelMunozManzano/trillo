@@ -149,8 +149,6 @@
                         </div>
                     </div>
 
-                    <!-- On the left side we have the description and on the right side
-                         we have the user reviews -->
                     <div class="detail">
                         <div class="description">
                             <p class="paragraph">
@@ -186,17 +184,10 @@
                         </div>
 
                         <div class="user-reviews">
-                            <!-- figures in HTML5 are perfect for reviews -->
-                            <!-- In fact, figures are great for some text and 
-                            descriptions of the images, so perfect too for 
-                            our review -->
                             <figure class="review">
-                                <!-- Review is like a quote from the person -->
                                 <blockquote class="review__text">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga doloremque architecto dicta animi, totam, itaque officia ex.
                                 </blockquote>
-                                <!-- The container which will hold the user's image
-                                the name, the date and the rating -->
                                 <figcaption class="review__user">
                                     <img src="img/user-1.jpg" alt="User 1" class="review__photo">
                                     <div class="review__user-box">
@@ -221,10 +212,25 @@
                                 </figcaption>
                             </figure>     
                             
-                            <!-- In a span because we want a small animation effect -->
                             <button class="btn-inline">Show all <span>&rarr;</span></button>
                         </div>
+
                     </div>
+
+                    <!-- cta means call to action -->
+                    <div class="cta">
+                        <h2 class="cta__book-now">
+                            Good news! We have 4 free rooms for your selected dates!
+                        </h2>
+                        <button class="btn">
+                             <!-- The button has 2 elements in there 
+                             One says BOOK NOW and another one says ONLY 4 ROOMS LEFT
+                             When we hover over it, they both slide down a little bit and
+                             when we hover out they move back up -->
+                             <span class="btn__visible">Book now</span>
+                             <span class="btn__invisible">Only 4 rooms left</span>                            
+                        </button>
+                    </div>                    
 
                 </main>
             </div>

@@ -1,3 +1,12 @@
+// Responsive Design
+// We are gonna use this strategy: we are going to set the breakpoints to where
+// the design starts to break. This is what we call "The perfect way of doing stuff"
+// Our first breakpoint should be at 1200px
+// As soon as we approach those 1200px we don't need this pink background
+// at the top anymore.
+// We are going to write the media querys old style, and using desktop-first strategy
+// so we are going to use max-width
+
 .container {
   // The container can decrease if there is not enough space to display our 1200px=120rem
   // So, if the viewport is less than 1200px then we simply occupy 100% of the available
@@ -12,6 +21,14 @@
 
   // For testing purposes
   min-height: 50rem;
+
+  @media only screen and (max-width: $bp-largest) {
+    margin: 0;
+    // Because when we decrease font-size in _base.scss to 50%, we have the problem
+    // of the pink backgound again
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .header {
@@ -27,6 +44,10 @@
 
 .content {
   display: flex;
+
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
@@ -58,6 +79,10 @@
   padding: 4.5rem;
   background-color: var(--color-grey-light-1);
   border-bottom: var(--line);
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 3rem;
+  }
 }
 
 .description {
@@ -68,6 +93,11 @@
   // When I'm using a percentage value here I set the other two to 0
   flex: 0 0 60%;
   margin-right: 4.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-right: 3rem;
+  }
 }
 
 .user-reviews {

@@ -492,8 +492,8 @@
     // Approach for older browsers - Using background-image
     // There is a problem of including an SVG as a background-image, and this is
     // that we have no way of changing the color
-    // background-image: url(../img/chevron-thin-right.svg);
-    // background-size: cover;
+    background-image: url(../img/chevron-thin-right.svg);
+    background-size: cover;
 
     // Approach for modern browsers - Using masks - Best approach
     // A mask defines an area where we can look through the element and see what's
@@ -503,14 +503,18 @@
     // look through that mask and see the background color in the area where the
     // icon is and everything else is covered, and so it's just gonna be white.
     // mask, for now only works in webkit browsers
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    // The icon covers the entire element. It behaves like background-size
-    -webkit-mask-size: cover;
+    @supports (-webkit-mask-image: url()) or (mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      // The icon covers the entire element. It behaves like background-size
+      -webkit-mask-size: cover;
 
-    // For the future, when all the other browsers start implementing this as well.
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+      // For the future, when all the other browsers start implementing this as well.
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      // Because then it applies the above background-image and the color is black
+      background-image: none;
+    }
   }
 }
 
